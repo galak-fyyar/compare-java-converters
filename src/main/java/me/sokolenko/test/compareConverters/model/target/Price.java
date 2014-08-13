@@ -1,6 +1,7 @@
 package me.sokolenko.test.compareConverters.model.target;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author Anatoliy Sokolenko
@@ -88,5 +89,55 @@ public class Price {
 
     public void setOnSale(Boolean onSale) {
         this.onSale = onSale;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.originalPrice) ^ (Double.doubleToLongBits(this.originalPrice) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.previousPrice) ^ (Double.doubleToLongBits(this.previousPrice) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.retailPrice) ^ (Double.doubleToLongBits(this.retailPrice) >>> 32));
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.salePrice) ^ (Double.doubleToLongBits(this.salePrice) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.from);
+        hash = 67 * hash + Objects.hashCode(this.to);
+        hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + (this.onSale ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Price other = (Price) obj;
+        if (Double.doubleToLongBits(this.originalPrice) != Double.doubleToLongBits(other.originalPrice)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.previousPrice) != Double.doubleToLongBits(other.previousPrice)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.retailPrice) != Double.doubleToLongBits(other.retailPrice)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.salePrice) != Double.doubleToLongBits(other.salePrice)) {
+            return false;
+        }
+        if (!Objects.equals(this.from, other.from)) {
+            return false;
+        }
+        if (!Objects.equals(this.to, other.to)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (this.onSale != other.onSale) {
+            return false;
+        }
+        return true;
     }
 }

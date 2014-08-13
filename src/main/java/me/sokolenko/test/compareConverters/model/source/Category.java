@@ -3,6 +3,7 @@ package me.sokolenko.test.compareConverters.model.source;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Anatoliy Sokolenko
@@ -310,5 +311,143 @@ public class Category {
 
     public void setResources(List<Resource> resources) {
         this.resources = resources;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.products);
+        hash = 97 * hash + Objects.hashCode(this.shipping);
+        hash = 97 * hash + Objects.hashCode(this.url);
+        hash = 97 * hash + (this.visible ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + (this.hasChildren ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.relatedIds);
+        hash = 97 * hash + Objects.hashCode(this.from);
+        hash = 97 * hash + Objects.hashCode(this.clearanceStartDays);
+        hash = 97 * hash + this.position;
+        hash = 97 * hash + Objects.hashCode(this.countryEligible);
+        hash = 97 * hash + (this.isNew ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.active);
+        hash = 97 * hash + Objects.hashCode(this.parameters);
+        hash = 97 * hash + Objects.hashCode(this.primaryImageSource);
+        hash = 97 * hash + Objects.hashCode(this.primaryPortraitSource);
+        hash = 97 * hash + Objects.hashCode(this.availableTo);
+        hash = 97 * hash + Objects.hashCode(this.author);
+        hash = 97 * hash + Objects.hashCode(this.createdAt);
+        hash = 97 * hash + Objects.hashCode(this.updatedAt);
+        hash = 97 * hash + Objects.hashCode(this.parentCategory);
+        hash = 97 * hash + Objects.hashCode(this.domainValues);
+        hash = 97 * hash + Objects.hashCode(this.primaryImage);
+        hash = 97 * hash + Objects.hashCode(this.secondaryImages);
+        hash = 97 * hash + Objects.hashCode(this.brand);
+        hash = 97 * hash + Objects.hashCode(this.popularity);
+        hash = 97 * hash + Objects.hashCode(this.copies);
+        hash = 97 * hash + Objects.hashCode(this.resources);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.products, other.products)) {
+            return false;
+        }
+        if (!Objects.equals(this.shipping, other.shipping)) {
+            return false;
+        }
+        if (!Objects.equals(this.url, other.url)) {
+            return false;
+        }
+        if (this.visible != other.visible) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (this.hasChildren != other.hasChildren) {
+            return false;
+        }
+        if (!Objects.equals(this.relatedIds, other.relatedIds)) {
+            return false;
+        }
+        if (!Objects.equals(this.from, other.from)) {
+            return false;
+        }
+        if (!Objects.equals(this.clearanceStartDays, other.clearanceStartDays)) {
+            return false;
+        }
+        if (this.position != other.position) {
+            return false;
+        }
+        if (!Objects.equals(this.countryEligible, other.countryEligible)) {
+            return false;
+        }
+        if (this.isNew != other.isNew) {
+            return false;
+        }
+        if (!Objects.equals(this.active, other.active)) {
+            return false;
+        }
+        if (!Objects.equals(this.parameters, other.parameters)) {
+            return false;
+        }
+        if (!Objects.equals(this.primaryImageSource, other.primaryImageSource)) {
+            return false;
+        }
+        if (!Objects.equals(this.primaryPortraitSource, other.primaryPortraitSource)) {
+            return false;
+        }
+        if (!Objects.equals(this.availableTo, other.availableTo)) {
+            return false;
+        }
+        if (!Objects.equals(this.author, other.author)) {
+            return false;
+        }
+        if (!Objects.equals(this.createdAt, other.createdAt)) {
+            return false;
+        }
+        if (!Objects.equals(this.updatedAt, other.updatedAt)) {
+            return false;
+        }
+        if (!Objects.equals(this.parentCategory, other.parentCategory)) {
+            return false;
+        }
+        if (!Objects.equals(this.domainValues, other.domainValues)) {
+            return false;
+        }
+        if (!Objects.equals(this.primaryImage, other.primaryImage)) {
+            return false;
+        }
+        if (!Objects.equals(this.secondaryImages, other.secondaryImages)) {
+            return false;
+        }
+        if (!Objects.equals(this.brand, other.brand)) {
+            return false;
+        }
+        if (!Objects.equals(this.popularity, other.popularity)) {
+            return false;
+        }
+        if (!Objects.equals(this.copies, other.copies)) {
+            return false;
+        }
+        if (!Objects.equals(this.resources, other.resources)) {
+            return false;
+        }
+        return true;
     }
 }

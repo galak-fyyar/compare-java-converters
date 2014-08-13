@@ -1,5 +1,7 @@
 package me.sokolenko.test.compareConverters.model.target;
 
+import java.util.Objects;
+
 /**
  * @author Anatoliy Sokolenko
  */
@@ -28,4 +30,29 @@ public class ParentCategory {
         this.name = name;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 31 * hash + this.id;
+        hash = 31 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ParentCategory other = (ParentCategory) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
 }
