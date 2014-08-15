@@ -11,11 +11,38 @@
   </configuration>
 
   <mapping>
+    <class-a>me.sokolenko.test.compareConverters.model.target.Availability</class-a>
+    <class-b>me.sokolenko.test.compareConverters.model.source.Availability</class-b>
+    <field>
+      <a>available</a>
+      <b get-method="isAvailable">available</b>
+    </field>
+  </mapping>
+
+  <mapping>
     <class-a>me.sokolenko.test.compareConverters.model.target.Category</class-a>
     <class-b>me.sokolenko.test.compareConverters.model.source.Category</class-b>
     <field>
       <a>categoryName</a>
       <b>name</b>
+    </field>
+  </mapping>
+
+  <mapping>
+    <class-a>me.sokolenko.test.compareConverters.model.target.Price</class-a>
+    <class-b>me.sokolenko.test.compareConverters.model.source.Price</class-b>
+    <field>
+      <a get-method="isOnSale">onSale</a>
+      <b>onSale</b>
+    </field>
+  </mapping>
+
+  <mapping>
+    <class-a>me.sokolenko.test.compareConverters.model.target.Product</class-a>
+    <class-b>me.sokolenko.test.compareConverters.model.source.Product</class-b>
+    <field>
+      <a>parameters</a>
+      <b>attributes</b>
     </field>
   </mapping>
 </mappings>

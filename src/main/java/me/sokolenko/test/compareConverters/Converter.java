@@ -9,4 +9,5 @@ public interface Converter {
 
     me.sokolenko.test.compareConverters.model.target.Category map(Category source);
 
+    Category unmap(me.sokolenko.test.compareConverters.model.target.Category source);
 }

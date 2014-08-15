@@ -1,6 +1,7 @@
 package me.sokolenko.test.compareConverters.model.target;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -46,5 +47,39 @@ public class ShippingRule {
 
     public void setShipDays(int shipDays) {
         this.shipDays = shipDays;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 23 * hash + Objects.hashCode(this.returnConstraints);
+        hash = 23 * hash + Objects.hashCode(this.notes);
+        hash = 23 * hash + Objects.hashCode(this.giftable);
+        hash = 23 * hash + this.shipDays;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ShippingRule other = (ShippingRule) obj;
+        if (!Objects.equals(this.returnConstraints, other.returnConstraints)) {
+            return false;
+        }
+        if (!Objects.equals(this.notes, other.notes)) {
+            return false;
+        }
+        if (!Objects.equals(this.giftable, other.giftable)) {
+            return false;
+        }
+        if (this.shipDays != other.shipDays) {
+            return false;
+        }
+        return true;
     }
 }

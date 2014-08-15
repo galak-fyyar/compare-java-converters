@@ -43,6 +43,13 @@ public class Main {
 
             long end = System.nanoTime();
 
+            Category rev = converter.unmap(result);
+
+            if (!rev.equals(category)) {
+                System.err.println("ERROR - results don't match");
+                System.exit(1);
+            }
+
             latencies[i] = (int) (end - start);
         }
 

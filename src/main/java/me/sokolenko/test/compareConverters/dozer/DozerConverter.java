@@ -23,4 +23,9 @@ public class DozerConverter implements Converter {
     public me.sokolenko.test.compareConverters.model.target.Category map(Category source) {
         return mapper.map(source, me.sokolenko.test.compareConverters.model.target.Category.class);
     }
+
+    @Override
+    public Category unmap(me.sokolenko.test.compareConverters.model.target.Category source) {
+        return mapper.map(source, Category.class);
+    }
 }

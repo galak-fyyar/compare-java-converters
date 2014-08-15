@@ -62,14 +62,61 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    @Override
+    public me.sokolenko.test.compareConverters.model.source.Category unmap(Category target) {
+        me.sokolenko.test.compareConverters.model.source.Category source = new me.sokolenko.test.compareConverters.model.source.Category();
+        source.setId(target.getId());
+        source.setName(target.getCategoryName());
+        source.setProducts(toSource(target.getProducts()));
+        source.setShipping(toSource(target.getShipping()));
+        source.setUrl(target.getUrl());
+        source.setVisible(target.isVisible());
+        source.setType(target.getType());
+        source.setHasChildren(target.isHasChildren());
+        source.setRelatedIds(target.getRelatedIds());
+        source.setFrom(new Date(target.getFrom().getTime()));
+        source.setClearanceStartDays(target.getClearanceStartDays());
+        source.setPosition(target.getPosition());
+        source.setCountryEligible(target.getCountryEligible());
+        source.setNew(target.isNew());
+        source.setActive(target.getActive());
+        source.setParameters(toSourceParameters(target.getParameters()));
+        source.setPrimaryImageSource(target.getPrimaryImageSource());
+        source.setPrimaryPortraitSource(target.getPrimaryPortraitSource());
+        source.setAvailableTo(target.getAvailableTo());
+        source.setAuthor(target.getAuthor());
+        source.setCreatedAt(new Date(target.getCreatedAt().getTime()));
+        source.setUpdatedAt(new Date(target.getUpdatedAt().getTime()));
+        source.setParentCategory(toSource(target.getParentCategory()));
+        source.setDomainValues(target.getDomainValues());
+        source.setPrimaryImage(toSource(target.getPrimaryImage()));
+        source.setSecondaryImages(toSourceImages(target.getSecondaryImages()));
+        source.setBrand(toSource(target.getBrand()));
+        source.setPopularity(target.getPopularity());
+        source.setCopies(target.getCopies());
+        source.setResources(toSourceAssets(target.getResources()));
+
+        return source;
+    }
+
     private List<Resource> toTargetAssets(List<me.sokolenko.test.compareConverters.model.source.Resource> source) {
-        List<Resource> target = new ArrayList<Resource>();
+        List<Resource> target = new ArrayList<>();
 
         for (me.sokolenko.test.compareConverters.model.source.Resource sourceAsset : source) {
             target.add(toTarget(sourceAsset));
         }
 
         return target;
+    }
+
+    private List<me.sokolenko.test.compareConverters.model.source.Resource> toSourceAssets(List<Resource> target) {
+        List<me.sokolenko.test.compareConverters.model.source.Resource> source = new ArrayList<>();
+
+        for (Resource sourceAsset : target) {
+            source.add(toSource(sourceAsset));
+        }
+
+        return source;
     }
 
     private Resource toTarget(me.sokolenko.test.compareConverters.model.source.Resource source) {
@@ -87,14 +134,39 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.Resource toSource(Resource target) {
+        me.sokolenko.test.compareConverters.model.source.Resource source = new me.sokolenko.test.compareConverters.model.source.Resource();
+        source.setId(target.getId());
+        source.setDescription(target.getDescription());
+        source.setFileName(target.getFileName());
+        source.setLinks(toSourceLinks(target.getLinks()));
+        source.setHeight((int) target.getHeight());
+        source.setWidth((int) target.getWidth());
+        source.setText(target.getText());
+        source.setType(toSource(target.getType()));
+        source.setParameters(toSourceParameters(target.getParameters()));
+
+        return source;
+    }
+
     private List<Link> toTargetLinks(List<me.sokolenko.test.compareConverters.model.source.Link> source) {
-        List<Link> target = new ArrayList<Link>();
+        List<Link> target = new ArrayList<>();
 
         for (me.sokolenko.test.compareConverters.model.source.Link sourceLink : source) {
             target.add(toTarget(sourceLink));
         }
 
         return target;
+    }
+
+    private List<me.sokolenko.test.compareConverters.model.source.Link> toSourceLinks(List<Link> target) {
+        List<me.sokolenko.test.compareConverters.model.source.Link> source = new ArrayList<>();
+
+        for (Link targetLink : target) {
+            source.add(toSource(targetLink));
+        }
+
+        return source;
     }
 
     private Link toTarget(me.sokolenko.test.compareConverters.model.source.Link source) {
@@ -108,12 +180,31 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.Link toSource(Link target) {
+        me.sokolenko.test.compareConverters.model.source.Link source = new me.sokolenko.test.compareConverters.model.source.Link();
+        source.setText(target.getText());
+        source.setPosition(target.getPosition());
+        source.setParameters(toSourceParameters(target.getParameters()));
+        source.setLinkType(toSource(target.getLinkType()));
+        source.setValue(target.getValue());
+
+        return source;
+    }
+
     private LinkType toTarget(me.sokolenko.test.compareConverters.model.source.LinkType source) {
         return LinkType.valueOf(source.name());
     }
 
+    private me.sokolenko.test.compareConverters.model.source.LinkType toSource(LinkType target) {
+        return me.sokolenko.test.compareConverters.model.source.LinkType.valueOf(target.name());
+    }
+
     private ResourceType toTarget(me.sokolenko.test.compareConverters.model.source.ResourceType source) {
         return ResourceType.valueOf(source.name());
+    }
+
+    private me.sokolenko.test.compareConverters.model.source.ResourceType toSource(ResourceType target) {
+        return me.sokolenko.test.compareConverters.model.source.ResourceType.valueOf(target.name());
     }
 
     private Brand toTarget(me.sokolenko.test.compareConverters.model.source.Brand source) {
@@ -124,14 +215,32 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.Brand toSource(Brand target) {
+        me.sokolenko.test.compareConverters.model.source.Brand source = new me.sokolenko.test.compareConverters.model.source.Brand();
+        source.setBrandName(target.getBrandName());
+        source.setRightOwner(target.getRightOwner());
+
+        return source;
+    }
+
     private List<Image> toTargetImages(List<me.sokolenko.test.compareConverters.model.source.Image> source) {
-        List<Image> target = new ArrayList<Image>();
+        List<Image> target = new ArrayList<>();
 
         for (me.sokolenko.test.compareConverters.model.source.Image sourceImage : source) {
             target.add(toTarget(sourceImage));
         }
 
         return target;
+    }
+
+    private List<me.sokolenko.test.compareConverters.model.source.Image> toSourceImages(List<Image> target) {
+        List<me.sokolenko.test.compareConverters.model.source.Image> source = new ArrayList<>();
+
+        for (Image targetImage : target) {
+            source.add(toSource(targetImage));
+        }
+
+        return source;
     }
 
     private Image toTarget(me.sokolenko.test.compareConverters.model.source.Image source) {
@@ -142,6 +251,14 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.Image toSource(Image target) {
+        me.sokolenko.test.compareConverters.model.source.Image source = new me.sokolenko.test.compareConverters.model.source.Image();
+        source.setName(target.getName());
+        source.setSeq(target.getSeq());
+
+        return source;
+    }
+
     private ParentCategory toTarget(me.sokolenko.test.compareConverters.model.source.ParentCategory source) {
         ParentCategory target = new ParentCategory();
         target.setId(source.getId());
@@ -150,14 +267,32 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.ParentCategory toSource(ParentCategory target) {
+        me.sokolenko.test.compareConverters.model.source.ParentCategory source = new me.sokolenko.test.compareConverters.model.source.ParentCategory();
+        source.setId(target.getId());
+        source.setName(target.getName());
+
+        return source;
+    }
+
     private List<Parameter> toTargetParameters(List<me.sokolenko.test.compareConverters.model.source.Parameter> source) {
-        List<Parameter> target = new ArrayList<Parameter>(source.size());
+        List<Parameter> target = new ArrayList<>(source.size());
 
         for (me.sokolenko.test.compareConverters.model.source.Parameter sourceParameter : source) {
             target.add(toTarget(sourceParameter));
         }
 
         return target;
+    }
+
+    private List<me.sokolenko.test.compareConverters.model.source.Parameter> toSourceParameters(List<Parameter> target) {
+        List<me.sokolenko.test.compareConverters.model.source.Parameter> source = new ArrayList<>(target.size());
+
+        for (Parameter targetParameter : target) {
+            source.add(toSource(targetParameter));
+        }
+
+        return source;
     }
 
     private ShippingRule toTarget(me.sokolenko.test.compareConverters.model.source.ShippingRule source) {
@@ -170,8 +305,18 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.ShippingRule toSource(ShippingRule target) {
+        me.sokolenko.test.compareConverters.model.source.ShippingRule source = new me.sokolenko.test.compareConverters.model.source.ShippingRule();
+        source.setReturnConstraints(target.getReturnConstraints());
+        source.setNotes(target.getNotes());
+        source.setGiftable(target.getGiftable());
+        source.setShipDays(target.getShipDays());
+
+        return source;
+    }
+
     private ArrayList<Product> toTarget(List<me.sokolenko.test.compareConverters.model.source.Product> source) {
-        ArrayList<Product> products = new ArrayList<Product>();
+        ArrayList<Product> products = new ArrayList<>();
         for (me.sokolenko.test.compareConverters.model.source.Product sourceProduct : source) {
             Product targetProduct = new Product();
             targetProduct.setId(sourceProduct.getId());
@@ -195,8 +340,33 @@ public class ManualConverter implements Converter {
         return products;
     }
 
+    private ArrayList<me.sokolenko.test.compareConverters.model.source.Product> toSource(List<Product> target) {
+        ArrayList<me.sokolenko.test.compareConverters.model.source.Product> products = new ArrayList<>();
+        for (Product targetProduct : target) {
+            me.sokolenko.test.compareConverters.model.source.Product sourceProduct = new me.sokolenko.test.compareConverters.model.source.Product();
+            sourceProduct.setId(targetProduct.getId());
+            sourceProduct.setPrice(toSource(targetProduct.getPrice()));
+            sourceProduct.setAvailability(toSource(targetProduct.getAvailability()));
+            sourceProduct.setIndicator(targetProduct.getIndicator());
+            sourceProduct.setEnabled(targetProduct.isEnabled());
+            sourceProduct.setAddByApp(targetProduct.getAddByApp());
+            sourceProduct.setDescription(targetProduct.getDescription());
+            sourceProduct.setCode(targetProduct.getCode());
+            sourceProduct.setExpired(targetProduct.getExpired());
+            sourceProduct.setSurchargeFee(targetProduct.getSurchargeFee());
+            sourceProduct.setHistory(targetProduct.isHistory());
+            sourceProduct.setOrderable(targetProduct.isOrderable());
+            sourceProduct.setBackorderable(targetProduct.isBackorderable());
+            sourceProduct.setAttributes(toSource(targetProduct.getParameters()));
+            sourceProduct.setActive(targetProduct.getActive());
+
+            products.add(sourceProduct);
+        }
+        return products;
+    }
+
     private Map<String, Parameter> toTarget(Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> source) {
-        Map<String, Parameter> target = new HashMap<String, Parameter>(source.size());
+        Map<String, Parameter> target = new HashMap<>(source.size());
 
         for (Map.Entry<String, me.sokolenko.test.compareConverters.model.source.Parameter> sourceEntry : source.entrySet()) {
             target.put(sourceEntry.getKey(), toTarget(sourceEntry.getValue()));
@@ -205,13 +375,23 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> toSource(Map<String, Parameter> target) {
+        Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> source = new HashMap<>(target.size());
+
+        for (Map.Entry<String, Parameter> targetEntry : target.entrySet()) {
+            source.put(targetEntry.getKey(), toSource(targetEntry.getValue()));
+        }
+
+        return source;
+    }
+
     private Parameter toTarget(me.sokolenko.test.compareConverters.model.source.Parameter source) {
         Parameter target = new Parameter();
         target.setName(source.getName());
         target.setHidden(source.isHidden());
         target.setOrder(source.getOrder());
 
-        List<String> targetValues = new ArrayList<String>();
+        List<String> targetValues = new ArrayList<>();
         for (String sourceValue : source.getValues()) {
             targetValues.add(sourceValue);
         }
@@ -221,12 +401,36 @@ public class ManualConverter implements Converter {
         return target;
     }
 
+    private me.sokolenko.test.compareConverters.model.source.Parameter toSource(Parameter target) {
+        me.sokolenko.test.compareConverters.model.source.Parameter source = new me.sokolenko.test.compareConverters.model.source.Parameter();
+        source.setName(target.getName());
+        source.setHidden(target.isHidden());
+        source.setOrder(target.getOrder());
+
+        List<String> sourceValues = new ArrayList<>();
+        for (String targetValue : target.getValues()) {
+            sourceValues.add(targetValue);
+        }
+
+        source.setValues(sourceValues);
+
+        return source;
+    }
+
     private Availability toTarget(me.sokolenko.test.compareConverters.model.source.Availability source) {
         Availability target = new Availability();
         target.setSource(source.getSource());
         target.setAvailable(source.isAvailable());
 
         return target;
+    }
+
+    private me.sokolenko.test.compareConverters.model.source.Availability toSource(Availability target) {
+        me.sokolenko.test.compareConverters.model.source.Availability source = new me.sokolenko.test.compareConverters.model.source.Availability();
+        source.setSource(target.getSource());
+        source.setAvailable(target.isAvailable());
+
+        return source;
     }
 
     private Price toTarget(me.sokolenko.test.compareConverters.model.source.Price source) {
@@ -241,5 +445,19 @@ public class ManualConverter implements Converter {
         target.setOnSale(source.isOnSale());
 
         return target;
+    }
+
+    private me.sokolenko.test.compareConverters.model.source.Price toSource(Price target) {
+        me.sokolenko.test.compareConverters.model.source.Price source = new me.sokolenko.test.compareConverters.model.source.Price();
+        source.setOriginalPrice(target.getOriginalPrice());
+        source.setPreviousPrice(target.getPreviousPrice());
+        source.setRetailPrice(target.getRetailPrice());
+        source.setSalePrice(target.getSalePrice());
+        source.setFrom(new java.sql.Date(target.getFrom().getTime()));
+        source.setTo(new java.sql.Date(target.getTo().getTime()));
+        source.setDescription(target.getDescription());
+        source.setOnSale(target.isOnSale());
+
+        return source;
     }
 }
