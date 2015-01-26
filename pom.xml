@@ -9,6 +9,8 @@
 
     <properties>
         <org.mapstruct.version>1.0.0.Beta3</org.mapstruct.version>
+        <dozer.version>5.5.1</dozer.version>
+        <orika.version>1.4.5</orika.version>
     </properties>
 
     <build>
@@ -88,21 +90,21 @@
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
-            <version>5.4.0</version>
+            <version>${dozer.version}</version>
         </dependency>
 
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
-            <version>1.4.1</version>
+            <version>${orika.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.mapstruct</groupId>
