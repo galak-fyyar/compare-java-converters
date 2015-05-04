@@ -1,6 +1,7 @@
 package me.sokolenko.test.compareConverters;
 
 import me.sokolenko.test.compareConverters.dozer.DozerConverter;
+import me.sokolenko.test.compareConverters.jmapper.JMapperConverter;
 import me.sokolenko.test.compareConverters.manual.ManualConverter;
 import me.sokolenko.test.compareConverters.mapstruct.MapStructConverterImpl;
 import me.sokolenko.test.compareConverters.model.source.Category;
@@ -23,6 +24,7 @@ public class Main {
         put("orika", OrikaConverter.class);
         put("manual", ManualConverter.class);
         put("mapStruct", MapStructConverterImpl.class);
+        put("jmapper", JMapperConverter.class);
     }};
 
     public static void main(String[] args) {

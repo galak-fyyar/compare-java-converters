@@ -1,5 +1,7 @@
 package me.sokolenko.test.compareConverters.model.target;
 
+import com.googlecode.jmapper.annotations.JGlobalMap;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 /**
  * @author Anatoliy Sokolenko
  */
+@JGlobalMap
 public class Category {
 
     private int id;

@@ -1,6 +1,7 @@
 package me.sokolenko.test.compareConverters;
 
 import me.sokolenko.test.compareConverters.dozer.DozerConverter;
+import me.sokolenko.test.compareConverters.jmapper.JMapperConverter;
 import me.sokolenko.test.compareConverters.manual.ManualConverter;
 import me.sokolenko.test.compareConverters.mapstruct.MapStructConverter;
 import me.sokolenko.test.compareConverters.mapstruct.MapStructConverterImpl;
@@ -19,6 +20,7 @@ public class JHMBenchmark {
     private final DozerConverter dozerConverter = new DozerConverter();
     private final MapStructConverter mapStructConverter = new MapStructConverterImpl();
     private final OrikaConverter orikaConverter = new OrikaConverter();
+    private final JMapperConverter jMapperConverter = new JMapperConverter();
 
     private int index = 0;
 
@@ -57,6 +59,12 @@ public class JHMBenchmark {
     public me.sokolenko.test.compareConverters.model.target.Category measureOrika() {
         Category source = getNextCategory();
         return orikaConverter.map(source);
+    }
+
+    @Benchmark
+    public me.sokolenko.test.compareConverters.model.target.Category measureJMapper() {
+        Category source = getNextCategory();
+        return jMapperConverter.map(source);
     }
 
     private Category getNextCategory() {
