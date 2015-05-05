@@ -1,25 +1,9 @@
 package me.sokolenko.test.compareConverters.manual;
 
 import me.sokolenko.test.compareConverters.Converter;
-import me.sokolenko.test.compareConverters.model.target.Resource;
-import me.sokolenko.test.compareConverters.model.target.ResourceType;
-import me.sokolenko.test.compareConverters.model.target.Parameter;
-import me.sokolenko.test.compareConverters.model.target.Availability;
-import me.sokolenko.test.compareConverters.model.target.Brand;
-import me.sokolenko.test.compareConverters.model.target.Category;
-import me.sokolenko.test.compareConverters.model.target.Image;
-import me.sokolenko.test.compareConverters.model.target.Link;
-import me.sokolenko.test.compareConverters.model.target.LinkType;
-import me.sokolenko.test.compareConverters.model.target.ParentCategory;
-import me.sokolenko.test.compareConverters.model.target.Price;
-import me.sokolenko.test.compareConverters.model.target.Product;
-import me.sokolenko.test.compareConverters.model.target.ShippingRule;
+import me.sokolenko.test.compareConverters.model.target.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Anatoliy Sokolenko
@@ -150,8 +134,8 @@ public class ManualConverter implements Converter {
         return target;
     }
 
-    private List<Parameter> toTargetParameters(List<me.sokolenko.test.compareConverters.model.source.Parameter> source) {
-        List<Parameter> target = new ArrayList<Parameter>(source.size());
+    private List<ParameterDTO> toTargetParameters(List<me.sokolenko.test.compareConverters.model.source.Parameter> source) {
+        List<ParameterDTO> target = new ArrayList<ParameterDTO>(source.size());
 
         for (me.sokolenko.test.compareConverters.model.source.Parameter sourceParameter : source) {
             target.add(toTarget(sourceParameter));
@@ -195,8 +179,8 @@ public class ManualConverter implements Converter {
         return products;
     }
 
-    private Map<String, Parameter> toTarget(Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> source) {
-        Map<String, Parameter> target = new HashMap<String, Parameter>(source.size());
+    private Map<String, ParameterDTO> toTarget(Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> source) {
+        Map<String, ParameterDTO> target = new HashMap<String, ParameterDTO>(source.size());
 
         for (Map.Entry<String, me.sokolenko.test.compareConverters.model.source.Parameter> sourceEntry : source.entrySet()) {
             target.put(sourceEntry.getKey(), toTarget(sourceEntry.getValue()));
@@ -205,8 +189,8 @@ public class ManualConverter implements Converter {
         return target;
     }
 
-    private Parameter toTarget(me.sokolenko.test.compareConverters.model.source.Parameter source) {
-        Parameter target = new Parameter();
+    private ParameterDTO toTarget(me.sokolenko.test.compareConverters.model.source.Parameter source) {
+        ParameterDTO target = new ParameterDTO();
         target.setName(source.getName());
         target.setHidden(source.isHidden());
         target.setOrder(source.getOrder());

@@ -1,5 +1,7 @@
 package me.sokolenko.test.compareConverters.model.target;
 
+import com.googlecode.jmapper.annotations.JGlobalMap;
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 /**
  * @author Anatoliy Sokolenko
  */
+@JGlobalMap
 public class Category {
 
     private int id;
@@ -39,7 +42,7 @@ public class Category {
 
     private Boolean active;
 
-    private List<Parameter> parameters;
+    private List<ParameterDTO> parameters;
 
     private String primaryImageSource;
 
@@ -192,11 +195,11 @@ public class Category {
         this.active = active;
     }
 
-    public List<Parameter> getParameters() {
+    public List<ParameterDTO> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<Parameter> parameters) {
+    public void setParameters(List<ParameterDTO> parameters) {
         this.parameters = parameters;
     }
 

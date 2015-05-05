@@ -16,7 +16,7 @@ public class Link {
 
     private String value;
 
-    private List<Parameter> parameters = new ArrayList<Parameter>();
+    private List<ParameterDTO> parameters = new ArrayList<ParameterDTO>();
 
     public String getPosition() {
         return position;
@@ -50,11 +50,11 @@ public class Link {
         this.value = value;
     }
 
-    public List<Parameter> getParameters() {
+    public List<ParameterDTO> getParameters() {
         return parameters;
     }
 
-    public void setParameters(List<Parameter> parameters) {
+    public void setParameters(List<ParameterDTO> parameters) {
         this.parameters = parameters;
     }
 }

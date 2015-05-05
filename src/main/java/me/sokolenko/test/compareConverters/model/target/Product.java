@@ -33,7 +33,7 @@ public class Product {
 
     private boolean backorderable;
 
-    private Map<String, Parameter> parameters;
+    private Map<String, ParameterDTO> parameters;
 
     private Boolean active;
 
@@ -141,11 +141,11 @@ public class Product {
         this.backorderable = backorderable;
     }
 
-    public Map<String, Parameter> getParameters() {
+    public Map<String, ParameterDTO> getParameters() {
         return parameters;
     }
 
-    public void setParameters(Map<String, Parameter> parameters) {
+    public void setParameters(Map<String, ParameterDTO> parameters) {
         this.parameters = parameters;
     }
 

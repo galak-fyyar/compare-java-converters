@@ -33,7 +33,7 @@ public class Product {
 
     private boolean backorderable;
 
-    private Map<String, Parameter> attributes;
+    private Map<String, me.sokolenko.test.compareConverters.model.source.Parameter> attributes;
 
     private Boolean active;
 

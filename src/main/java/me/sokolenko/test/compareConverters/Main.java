@@ -1,7 +1,9 @@
 package me.sokolenko.test.compareConverters;
 
 import me.sokolenko.test.compareConverters.dozer.DozerConverter;
+import me.sokolenko.test.compareConverters.jmapper.JMapperConverter;
 import me.sokolenko.test.compareConverters.manual.ManualConverter;
+import me.sokolenko.test.compareConverters.mapstruct.MapStructConverterImpl;
 import me.sokolenko.test.compareConverters.model.source.Category;
 import me.sokolenko.test.compareConverters.orika.OrikaConverter;
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +23,8 @@ public class Main {
         put("dozer", DozerConverter.class);
         put("orika", OrikaConverter.class);
         put("manual", ManualConverter.class);
+        put("mapStruct", MapStructConverterImpl.class);
+        put("jmapper", JMapperConverter.class);
     }};
 
     public static void main(String[] args) {
@@ -40,6 +44,7 @@ public class Main {
             long start = System.nanoTime();
 
             me.sokolenko.test.compareConverters.model.target.Category result = converter.map(category);
+
 
             long end = System.nanoTime();
 
@@ -62,6 +67,13 @@ public class Main {
         System.out.println("99.999% " + latencies[((int) (latencies.length * 0.99999))]);
         System.out.println("99.9999% " + latencies[((int) (latencies.length * 0.999999))]);
         System.out.println("Max " + latencies[latencies.length - 1]);
+
+        int total = 0;
+        for(int i=0; i<latencies.length; i++) {
+            total += latencies[i];
+        }
+
+        System.out.println("Avg "+ (total / latencies.length));
     }
 
     private static Converter getConverter(String[] args) {
